@@ -6,6 +6,8 @@ import { BellEvent } from 'src/events/bell.event';
 
 @Injectable()
 export class BellService {
+    private DEBUG: boolean = true;
+
     private readonly logger = new Logger("Bell");
     private bellnr: number = 4; // GPIO für Klingel
     private ringBellMs: number = 2000; // Wie lange die Klingel klingeln soll.
@@ -33,17 +35,20 @@ export class BellService {
     }
 
     ringBell() {
-        // Klingel läuten lassen
-        const Gpio = require('onoff').Gpio;
-        const bell = new Gpio(this.bellnr, 'out'); 
-        const ringing = setInterval(_ => {
-            bell.writeSync(bell.readSync() ^ 1);
-        }, 500);
-        setTimeout(_ => {
-            clearInterval(ringing);
-            bell.writeSync(0);
-            bell.unexport(); 
-        }, this.ringBellMs);
+	if (!this.DEBUG){
+
+	    // Klingel läuten lassen
+            const Gpio = require('onoff').Gpio;
+            const bell = new Gpio(this.bellnr, 'out'); 
+            const ringing = setInterval(_ => {
+                bell.writeSync(bell.readSync() ^ 1);
+            }, 500);
+            setTimeout(_ => {
+                clearInterval(ringing);
+                bell.writeSync(0);
+                bell.unexport(); 
+            }, this.ringBellMs);
+	}
     }
 
     dateAsHMNr(date: Date) {

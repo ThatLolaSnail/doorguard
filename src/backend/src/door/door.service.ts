@@ -6,6 +6,8 @@ import { DoorEvent } from 'src/events/door.event';
 
 @Injectable()
 export class DoorService {
+    private DEBUG: boolean = true;
+
     private readonly logger = new Logger("Door");
 
     private doornr: number = 17;
@@ -23,14 +25,16 @@ export class DoorService {
     }
 
     openDoor(mseconds: number) {
-        this.logger.log("Door opened");
-        const Gpio = require('onoff').Gpio;
-        const door = new Gpio(this.doornr, 'out'); 
-        door.writeSync(1);
-        setTimeout(_ => {
-            door.writeSync(0);
-            door.unexport(); 
-        }, mseconds);
+	if (!this.DEBUG){
+	    this.logger.log("Door opened");
+            const Gpio = require('onoff').Gpio;
+            const door = new Gpio(this.doornr, 'out'); 
+            door.writeSync(1);
+            setTimeout(_ => {
+                door.writeSync(0);
+                door.unexport(); 
+            }, mseconds);
+	}
     }
 
     checkLock() {

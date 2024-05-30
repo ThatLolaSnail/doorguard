@@ -6,7 +6,7 @@ import { BellManagerModule } from './bellmanager/bellmanager.module';
 import { DoorModule } from './door/door.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { LoggerModule } from 'nestjs-pino';
-import { RisemanagerModule } from './risemanager/risemanager.module';
+import { ButtonModule } from './button/button.module';
 import { BellModule } from './bell/bell.module';
 import { DatabaseModule } from './database/database.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -34,7 +34,7 @@ import { FrontendModule } from './frontend/frontend.module';
       },
       level: 'debug',
     },
-  }), RisemanagerModule, BellModule, DatabaseModule, FrontendModule, ],
+  }), ButtonModule, BellModule, DatabaseModule, FrontendModule, ],
   controllers: [AppController],
   providers: [AppService],
 })
