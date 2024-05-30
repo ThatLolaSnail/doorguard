@@ -9,12 +9,12 @@ import { ButtonEvent } from 'src/events/button.event';
 import { BellEvent } from 'src/events/bell.event';
 import { DoorEvent } from 'src/events/door.event';
 import { RiseEvent } from 'src/events/rise.event';
-import { FrontendService } from 'src/frontend/frontend.service';
+import { BeautifulService } from 'src/beautiful/beautiful.service';
 
 @Injectable()
 export class DatabaseService {
 
-    constructor(@InjectRepository(GuardEvent) private db: Repository<GuardEvent>, private frontend: FrontendService) {
+    constructor(@InjectRepository(GuardEvent) private db: Repository<GuardEvent>, private frontend: BeautifulService) {
 
     }
 

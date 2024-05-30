@@ -11,7 +11,7 @@ import { BellModule } from './bell/bell.module';
 import { DatabaseModule } from './database/database.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GuardEvent } from './database/entitys/guardevent.entity';
-import { FrontendModule } from './frontend/frontend.module';
+import { BeautifulModule } from './beautiful/beautiful.module';
 
 @Module({
   imports: [
@@ -34,7 +34,7 @@ import { FrontendModule } from './frontend/frontend.module';
       },
       level: 'debug',
     },
-  }), ButtonModule, BellModule, DatabaseModule, FrontendModule, ],
+  }), ButtonModule, BellModule, DatabaseModule, BeautifulModule, ],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { GuardEvent } from 'src/database/entitys/guardevent.entity';
 
 @Injectable()
-export class FrontendService {
+export class BeautifulService {
 
     asBeautifulTable(headers: any, content: GuardEvent[]) {
         let output: string = "";
