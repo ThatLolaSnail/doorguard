@@ -1,0 +1,37 @@
+
+<h1>Hello!</h1>
+
+<p>
+    HeeeeLooo. Dies ist ein Test:
+</p>
+<table border=1px>
+    <tr>
+	<th>Name</th>
+    </tr>
+    <tr>
+	<th>
+	    <%- people.join("\
+	</th>\
+    </tr>\
+    <tr>\
+	<th>"); %>
+	</th>
+    </tr>
+</table>
+
+<table>
+    <thead>
+	<tr>
+	    <th>Nummer</th>
+	    <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+	<% let i=0; people.forEach(user => { %>
+	    <tr>
+		<td><%= i++ %></td>
+		<td><%= user %></td>
+	    </tr>
+	<% }); %>
+    </tbody>
+</table>
