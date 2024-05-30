@@ -12,6 +12,7 @@ import { DatabaseModule } from './database/database.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GuardEvent } from './database/entitys/guardevent.entity';
 import { BeautifulModule } from './beautiful/beautiful.module';
+import { FrontendModule } from './frontend/frontend.module';
 
 @Module({
   imports: [
@@ -34,7 +35,7 @@ import { BeautifulModule } from './beautiful/beautiful.module';
       },
       level: 'debug',
     },
-  }), ButtonModule, BellModule, DatabaseModule, BeautifulModule, ],
+  }), ButtonModule, BellModule, DatabaseModule, BeautifulModule, FrontendModule, ],
   controllers: [AppController],
   providers: [AppService],
 })

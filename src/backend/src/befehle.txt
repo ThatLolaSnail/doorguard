@@ -2,3 +2,6 @@ apt install nodejs
 apt install npm 
 npm install
 npm run start
+   46  nest generate module frontend
+   47  nest generate controller frontend
+   48  nest generate service frontend
