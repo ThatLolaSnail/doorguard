@@ -1,16 +1,17 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { EventEmitter2 } from '@nestjs/event-emitter';
+import { ButtonEvent } from 'src/events/button.event';
 
 @Injectable()
 export class FrontendService {
-    //private readonly logger = new Logger("Frontend");
+    private readonly logger = new Logger("Frontend.Controller");
 
-    constructor(){
+    constructor(private events: EventEmitter2) {
     }
 
 	render(filepath: string, data){
-		let logger = new Logger("Frontend.Controller");
 		let ejs = require('ejs');
-		logger.log("Filename: "+filepath);
+		//this.logger.log("Filename: "+filepath);
 		
 		//var read = require('fs').readFileSync;
 		//let options = {encoding: 'utf-8', flag: 'r'};
@@ -22,7 +23,7 @@ export class FrontendService {
 		    html = str; error= err;
 		});
 		if (error!=null){
-		    logger.log(error);
+		    this.logger.log(error);
 		    return "Error while rendering the ejs template...";
 		}
 		return html;
@@ -46,5 +47,12 @@ export class FrontendService {
 
     	getTest() {
 	    return this.render("html/test.html", {});
+	}
+    	testDoorbell() {
+	    this.logger.log('Button on website pressed');
+	    this.events.emit(
+		'button.pressed',
+		new ButtonEvent(),
+	    );
 	}
 }

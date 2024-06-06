@@ -1,4 +1,4 @@
-import { Controller, Get, Logger } from '@nestjs/common';
+import { Controller, Get, Logger, Redirect } from '@nestjs/common';
 import { FrontendService } from './frontend.service';
 
 @Controller('frontend')
@@ -8,27 +8,32 @@ export class FrontendController {
 
     @Get("/")
     getIndex() {
-		return this.service.getIndex();
+	return this.service.getIndex();
     }
     
     @Get("/settings")
     getSettings() {
-		return this.service.getSettings();
+	return this.service.getSettings();
     }
     
     @Get("/advanced")
     getAdvanced() {
-		return this.service.getAdvanced();
+	return this.service.getAdvanced();
     }
     
     @Get("/log")
     getLog() {
-		return this.service.getLog();
+	return this.service.getLog();
     }
     
     @Get("/test")
     getTest() {
-		return this.service.getTest();
+	return this.service.getTest();
+    }
+    @Get("/test/doorbell")
+    @Redirect('/frontend/test')
+    getTestDoorbell() {
+	this.service.testDoorbell();
     }
     
     
