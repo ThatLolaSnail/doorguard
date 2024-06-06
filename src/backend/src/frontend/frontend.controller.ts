@@ -7,8 +7,30 @@ export class FrontendController {
 	constructor(private service: FrontendService){}
 
     @Get("/")
-    getFrontend() {
-		return this.service.lolaFunction();
+    getIndex() {
+		return this.service.getIndex();
     }
+    
+    @Get("/settings")
+    getSettings() {
+		return this.service.getSettings();
+    }
+    
+    @Get("/advanced")
+    getAdvanced() {
+		return this.service.getAdvanced();
+    }
+    
+    @Get("/log")
+    getLog() {
+		return this.service.getLog();
+    }
+    
+    @Get("/test")
+    getTest() {
+		return this.service.getTest();
+    }
+    
+    
     
 }
