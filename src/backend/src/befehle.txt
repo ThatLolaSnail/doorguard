@@ -5,3 +5,5 @@ npm run start
    46  nest generate module frontend
    47  nest generate controller frontend
    48  nest generate service frontend
+apt install python-is-python3
+apt install python3-pip

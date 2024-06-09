@@ -1,4 +1,4 @@
-// Zuständigkeit: M
+// Zuständigkeit: Kohne
 
 import { Injectable, Logger } from '@nestjs/common';
 import { EventEmitterModule, OnEvent } from '@nestjs/event-emitter';
@@ -25,8 +25,8 @@ export class DoorService {
     }
 
     openDoor(mseconds: number) {
+	this.logger.log("Door opened");
 	if (!this.DEBUG){
-	    this.logger.log("Door opened");
             const Gpio = require('onoff').Gpio;
             const door = new Gpio(this.doornr, 'out'); 
             door.writeSync(1);
