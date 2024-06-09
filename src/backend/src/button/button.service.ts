@@ -6,9 +6,8 @@ import { RiseEvent } from 'src/events/rise.event';
 
 @Injectable()
 export class ButtonService {
-    private DEBUG: boolean = true;
-
     private readonly logger = new Logger("Button");
+    private isPi = require('detect-rpi');
 
     private btnnr: number = 2; // GPIO Pin für KlingelKnopf unten
 
@@ -20,7 +19,7 @@ export class ButtonService {
     private last_rise: Date = new Date();
 
     constructor(private events: EventEmitter2) {
-	if (!this.DEBUG){
+	if (this.isPi()){
             const Gpio = require('onoff').Gpio;
             let button = new Gpio(this.btnnr, 'in', 'rising');
             button.watch((err, value) => {

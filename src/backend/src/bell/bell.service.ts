@@ -6,9 +6,8 @@ import { BellEvent } from 'src/events/bell.event';
 
 @Injectable()
 export class BellService {
-    private DEBUG: boolean = true;
-
     private readonly logger = new Logger("Bell");
+    private isPi = require('detect-rpi');
     private bellnr: number = 4; // GPIO für Klingel
     private ringBellMs: number = 2000; // Wie lange die Klingel klingeln soll.
 
@@ -35,7 +34,7 @@ export class BellService {
     }
 
     ringBell() {
-	if (!this.DEBUG){
+	if (this.isPi()){
 
 	    // Klingel läuten lassen
             const Gpio = require('onoff').Gpio;
